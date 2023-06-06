@@ -51,4 +51,12 @@ def achar_item(cod_produto):
         nota.write(f'Total: {valor_total}')
         nota.close()
 
+        print("===//===//===Nota Fiscal===//===//===\n")
+        for i in range(len(compras)//3):
+            for j in range(1):
+                print(f"O código do produto é: {compras[j]}    Nome do produto: {compras[j+1]}   Total do produto = R${compras[i+2]:.2f}")
+        valor_total = float(valor_total)
+        print(f"Total: R${valor_total:.2f}")
+
+
 achar_item(cod_produto)
