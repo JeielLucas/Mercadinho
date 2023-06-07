@@ -32,8 +32,7 @@ def achar_item(cod_produto):
             valor = preco * qnt
             valor_total += valor
             compras.append(valor)
-            achouCodigo == True
-            break
+            achouCodigo = True
     arq.close()
     if(achouCodigo == False):
         print("Código inexistente")
@@ -45,7 +44,7 @@ def achar_item(cod_produto):
         achar_item(cod_produto)
     else:
         os.system('cls')
-        nota = open('notaFiscal.txt', 'a')
+        nota = open('notaFiscal.txt', 'w')
         for i in range(len(compras)//3):
             for j in range(3):
                 nota.write(f'{compras[cont]}')
@@ -55,7 +54,6 @@ def achar_item(cod_produto):
             nota.write(f'\n')
         valor_total = str(valor_total)
         nota.write(f'Total: {valor_total}')
-        nota.close()
 
         print("===//===//===Nota Fiscal===//===//===\n")
         for i in range(len(compras)//3):
@@ -63,6 +61,7 @@ def achar_item(cod_produto):
                 print(f"O código do produto é: {compras[j]}    Nome do produto: {compras[j+1]}   Total do produto = R${compras[i+2]:.2f}")
         valor_total = float(valor_total)
         print(f"Total: R${valor_total:.2f}")
+        nota.close()
 
 
 achar_item(cod_produto)
