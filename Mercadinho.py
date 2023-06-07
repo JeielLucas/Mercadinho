@@ -1,15 +1,16 @@
+import os
+
 valor_total = 0
 compras = []
 cont = 0
-import os
+
 def menu():
-    print(
-    '''
-    01-Picanha-30.99
-    02-Frango-19.90
-    03-Macarrão-5.00
-    42-Biscoito-5.30
-    ''')
+    arquivo = open("Produtos.txt", "r")
+    arqProdutos = arquivo.readlines()
+    for i in arqProdutos:
+        i = i.replace("\n", "")
+        print(f"{i}")
+
 
 menu()
 
@@ -19,6 +20,7 @@ cod_produto = str(input('Digite o código do produto desejado: '))
 def achar_item(cod_produto):
     global valor_total, qnt, cont
     arq = open('Produtos.txt', 'r')
+    achouCodigo = False
     for i in arq:
         i = i.replace(f'\n', '')
         cod, nome, preco = i.split('-', 3)
@@ -30,7 +32,11 @@ def achar_item(cod_produto):
             valor = preco * qnt
             valor_total += valor
             compras.append(valor)
+            achouCodigo == True
+            break
     arq.close()
+    if(achouCodigo == False):
+        print("Código inexistente")
     terminar = str(input('Deseja terminar? s/n '))
     if terminar == 'n':
         os.system('cls')
