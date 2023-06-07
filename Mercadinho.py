@@ -23,7 +23,7 @@ def achar_item(cod_produto):
     achouCodigo = False
     for i in arq:
         i = i.replace(f'\n', '')
-        cod, nome, preco = i.split('-', 3)
+        cod, nome, preco = i.split(' - ', 3)
         if cod == cod_produto:
             preco = float(preco)
             qnt = int(input('Digite a quantidade desejada: '))
